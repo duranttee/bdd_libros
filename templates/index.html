@@ -23,15 +23,20 @@
                     </div>
                     <div class="card-body">
                         <form action="/products" method="POST">
+                            <label>Clave de identificación</label>
+                            <input type="text" class="form-control mb-3" name="id">
                             <label>Nombre</label>
                             <input type="text" class="form-control mb-3" name="name">
                             <label>Autor</label>
                             <input type="text" class="form-control mb-3" name="author">
+                            <label>Fecha de publicación</label>
+                            <input type="text" class="form-control mb-3" name="date">
                             <button class="btn btn-primary" type="submit">Guardar</button>
                         </form>
                     </div>
                 </div>
             </div>
+            
 
             <div class="col-md-6">
                 <div class="card">
@@ -45,12 +50,18 @@
 
                                     <div class="col">
                                         <li class="list-group-item mb-3">
-                                            <form action="/edit/{{product.name}}" method="POST">
+                                            <form action="/edit/{{product.id}}" method="POST">
+                                                <small>Clave de identificación</small>
+                                                <input type="text" class="form-control" value="{{product.id}}" name="id">
+                                                <small>Nombre</small>
                                                 <input type="text" class="form-control" value="{{product.name}}" name="name">
                                                 <small>Autor</small>
                                                 <input type="text" class="form-control" value="{{product.author}}" name="author">
+                                                <small>Fecha de publicación</small>
+                                                <input type="text" class="form-control" value="{{product.date}}" name="date">
                                                 <button class="btn btn-primary btn-sm mt-3" type="submit">Editar</button>
-                                                <a href="{{url_for('delete', product_name=product.name)}}" class="btn btn-danger btn-sm mt-3">Eliminar</a>
+                                                <a href="{{ url_for('delete', product_id=product.id) }}" class="btn btn-danger btn-sm mt-3">Eliminar</a>
+
 
                                             </form>
                                         </li>
